@@ -1,0 +1,19 @@
+name: PR Build
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  pull-requests: write
+
+concurrency:
+  group: tf
+
+jobs:
+  plan:
+    if: github.event.pull_request.head.repo.fork != true
+    uses: curioswitch/cdktn-actions/.github/workflows/pr.yaml@07dea324a8add16c5a4fa02718cc0ed67499826a
+    with:
+      gcp_project_id: ${{ vars.GCP_PROJECT_ID_DEV }}
+      gcp_project_number: ${{ vars.GCP_PROJECT_NUMBER_DEV }}
