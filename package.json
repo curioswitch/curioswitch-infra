@@ -1,0 +1,23 @@
+{
+  "name": "curioswitch-infra",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "format": "biome check --write --unsafe . && prettier --write '**/*.yaml' '**/*.md'",
+    "lint": "biome check . && prettier --check '**/*.yaml' '**/*.md'"
+  },
+  "dependencies": {
+    "@cdktn/provider-github": "^16.0.0",
+    "@cdktn/provider-google": "^17.0.0",
+    "@cdktn/provider-google-beta": "^17.0.0",
+    "@cdktn/provider-random": "^13.0.0",
+    "@curioswitch/cdktn-constructs": "file:../cdktn-constructs",
+    "cdktn": "^0.23.0-pre.29",
+    "constructs": "^10.6.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.12",
+    "cdktn-cli": "^0.23.0-pre.29",
+    "typescript": "^5.9.3"
+  }
+}
