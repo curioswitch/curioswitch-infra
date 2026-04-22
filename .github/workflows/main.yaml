@@ -1,0 +1,21 @@
+name: Main Build
+on:
+  push:
+    branches:
+      - main
+      - release/**
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  pull-requests: write
+
+concurrency:
+  group: tf
+
+jobs:
+  apply:
+    uses: curioswitch/cdktn-actions/.github/workflows/main.yaml@07dea324a8add16c5a4fa02718cc0ed67499826a
+    with:
+      gcp_project_id: ${{ startsWith(github.ref_name, 'release/') && vars.GCP_PROJECT_ID_PROD || vars.GCP_PROJECT_ID_DEV }}
+      gcp_project_number: ${{ startsWith(github.ref_name, 'release/') && vars.GCP_PROJECT_NUMBER_PROD || vars.GCP_PROJECT_NUMBER_DEV }}
