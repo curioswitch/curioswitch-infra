@@ -44,6 +44,7 @@ export class Dns extends Construct {
         rrdatas: ["CPpw6UFgM8reBQRSP_7d608ORiHhIKLqt3wlSE_eeeU"],
       });
     }
+
     if (config.project === "curioswitch-prod") {
       new DnsRecordSet(this, "curioswitch-org", {
         managedZone: zone.name,
